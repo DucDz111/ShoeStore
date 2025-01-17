@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thanh toán</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+    <h1>Trang Thương Mại Điện Tử</h1>
+    <nav>
+        <a href="/" th:href="@{/}">Trang chủ</a>
+        <a href="/products" th:href="@{/products}">Sản phẩm</a>
+        <a href="/cart" th:href="@{/cart}">Giỏ hàng</a>
+        <a href="/checkout" th:href="@{/checkout}">Thanh toán</a>
+    </nav>
+</header>
+
+<section class="checkout">
+    <h2>Thanh toán</h2>
+    <form action="/checkout/complete" method="post">
+        <div>
+            <label for="name">Tên người nhận</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="address">Địa chỉ</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <div>
+            <label for="payment">Phương thức thanh toán</label>
+            <select id="payment" name="payment">
+                <option value="credit-card">Thẻ tín dụng</option>
+                <option value="paypal">Paypal</option>
+            </select>
+        </div>
+        <button type="submit">Xác nhận thanh toán</button>
+    </form>
+</section>
+</body>
+</html>

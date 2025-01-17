@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="/src/main/webapp/WEB-INF/style.css">
+</head>
+<body>
+<div th:replace="~{include/header}"></div>
+<header>
+    <h1>Shop Giày</h1>
+    <a href="cart">Giỏ Hàng</a>
+</header>
+<main>
+    <h2>Danh Sách Sản Phẩm</h2>
+    <div class="products">
+        <div class="product" th:each="shoe : ${shoes}">
+            <img th:src="${shoe.imageUrl}" alt="Ảnh sản phẩm">
+            <h3 th:text="${shoe.name}"></h3>
+            <p>Giá: <span th:text="${shoe.price}">0</span> VNĐ</p>
+            <a th:href="@{/product/{id}(id=${shoe.id})}">Xem chi tiết</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

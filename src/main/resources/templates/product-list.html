@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sach san pham</title>
+    <link rel="stylesheet" href="/src/main/webapp/WEB-INF/style.css">
+</head>
+<body>
+<header>
+    <h1>Trang Thương Mại Điện Tử</h1>
+    <nav>
+        <a href="/" th:href="@{/}">Trang chủ</a>
+        <a href="/products" th:href="@{/products}">Sản phẩm</a>
+        <a href="/cart" th:href="@{/cart}">Giỏ hàng</a>
+        <a href="/checkout" th:href="@{/checkout}">Thanh toán</a>
+    </nav>
+</header>
+
+<section class="product-list">
+    <h2>Các sản phẩm của chúng tôi</h2>
+    <div class="product" th:each="product : ${products}">
+        <img th:src="@{${product.imageUrl}}" alt="product image">
+        <p th:text="${product.name}"></p>
+        <p th:text="${product.price}"></p>
+        <a th:href="@{/products/{id}(id=${product.id})}">Xem chi tiết</a>
+    </div>
+</section>
+</body>
+</html>

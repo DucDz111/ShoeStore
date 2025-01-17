@@ -1,0 +1,100 @@
+/* Đặt nền cho header */
+header {
+    background-color: #007bff; /* Màu nền xanh */
+    color: white; /* Màu chữ trắng */
+    padding: 15px 0; /* Khoảng cách trên và dưới */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho header */
+}
+
+/* Định dạng cho tiêu đề của trang */
+header h1 {
+    font-size: 32px; /* Kích thước chữ lớn */
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-family: 'Arial', sans-serif; /* Phông chữ */
+    text-align: center; /* Canh giữa */
+}
+
+/* Thanh điều hướng */
+nav {
+    display: flex; /* Sử dụng Flexbox để căn chỉnh các phần tử trong thanh menu */
+    justify-content: space-evenly; /* Căn đều các menu item */
+    margin-top: 10px; /* Khoảng cách giữa tiêu đề và thanh điều hướng */
+}
+
+/* Danh sách các mục trong thanh điều hướng */
+nav ul {
+    list-style: none; /* Loại bỏ dấu chấm của danh sách */
+    padding: 0; /* Loại bỏ padding */
+    margin: 0; /* Loại bỏ margin */
+    display: flex; /* Các mục menu nằm ngang */
+    width: 100%; /* Đảm bảo menu có đủ không gian */
+    justify-content: space-evenly; /* Căn đều các mục trong menu */
+}
+
+/* Mỗi mục trong menu */
+nav ul li {
+    margin: 0; /* Loại bỏ margin mặc định */
+}
+
+/* Liên kết trong menu */
+nav ul li a {
+    color: white; /* Màu chữ trắng cho liên kết */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    font-size: 18px; /* Kích thước chữ */
+    font-weight: 500; /* Định dạng chữ đậm */
+    padding: 10px 20px; /* Khoảng cách trong các mục menu */
+    transition: background-color 0.3s, color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+    border-radius: 5px; /* Bo góc cho các liên kết */
+}
+
+/* Hiệu ứng hover cho liên kết */
+nav ul li a:hover {
+    background-color: #0056b3; /* Màu nền chuyển sang xanh đậm khi hover */
+    color: white; /* Màu chữ giữ nguyên khi hover */
+}
+
+/* Liên kết giỏ hàng */
+header a.cart {
+    color: #ff8c00; /* Màu cam cho liên kết giỏ hàng */
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header a.cart:hover {
+    color: #ff9e3a; /* Màu sáng hơn khi hover */
+}
+
+/* Định dạng cho logo hoặc hình ảnh logo */
+header .logo img {
+    width: 150px; /* Đặt kích thước logo */
+    height: auto; /* Đảm bảo tỷ lệ logo không bị méo */
+}
+
+/* Responsive: Khi màn hình nhỏ, thanh điều hướng sẽ thay đổi thành một menu thả xuống */
+@media (max-width: 768px) {
+    header {
+        text-align: left;
+        padding: 10px 20px;
+    }
+
+    nav {
+        flex-direction: column; /* Đặt các menu item thành cột */
+        align-items: flex-start; /* Căn lề trái cho các mục menu */
+    }
+
+    nav ul {
+        flex-direction: column; /* Đặt các mục menu thành cột */
+        align-items: flex-start; /* Căn lề trái */
+    }
+
+    nav ul li {
+        margin-right: 0; /* Bỏ khoảng cách giữa các mục menu */
+        margin-bottom: 10px; /* Khoảng cách dưới mỗi mục */
+    }
+
+    header a.cart {
+        margin-top: 10px;
+    }
+}

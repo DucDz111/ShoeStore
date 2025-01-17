@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <!-- Phần đầu tiên chỉ định thông tin dự án -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Group ID, Artifact ID và Version của dự án -->
+  <groupId>com.example</groupId>
+  <artifactId>untitle01</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <!-- Đặt tên cho dự án -->
+  <name>Spring Boot Ecommerce</name>
+
+  <!-- Chỉ định packaging là 'jar' để phù hợp với Spring Boot -->
+  <packaging>jar</packaging>
+
+  <!-- Thông tin về Spring Boot -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.0</version> <!-- Phiên bản Spring Boot có thể thay đổi -->
+  </parent>
+
+  <!-- Các thuộc tính chung -->
+  <properties>
+    <java.version>11</java.version> <!-- Java 11 hoặc phiên bản bạn đang sử dụng -->
+  </properties>
+
+  <!-- Các phụ thuộc cho dự án -->
+  <dependencies>
+    <!-- Phụ thuộc Spring Boot Starter Web cho ứng dụng web -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- Thymeleaf Template Engine -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+    <!-- Phụ thuộc Spring Boot Starter Data JPA (Nếu dùng cơ sở dữ liệu) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- Phụ thuộc Spring Boot DevTools giúp phát triển nhanh hơn (tự reload) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+
+    <!-- Phụ thuộc Spring Boot Starter Test (Để test ứng dụng) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.200</version> <!-- Bạn có thể thay đổi phiên bản -->
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Thymeleaf -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>font-awesome</artifactId>
+      <version>5.15.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version> <!-- Thay bằng phiên bản mới nhất -->
+    </dependency>
+
+  </dependencies>
+
+
+  <!-- Cấu hình plugin cho Spring Boot -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

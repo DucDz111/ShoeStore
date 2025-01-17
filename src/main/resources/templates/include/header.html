@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Bán Giày</title>
+  <!-- Thêm Font Awesome từ CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Thanh Điều Hướng */
+    nav {
+      display: flex; /* Sử dụng Flexbox để căn chỉnh các phần tử trong thanh menu */
+      justify-content: flex-start; /* Căn chỉnh các phần tử sang bên trái */
+      align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+      padding-left: -15px; /* Đẩy tất cả các phần tử sang bên trái một chút */
+      margin-right: 0; /* Không còn margin phải */
+      margin-left: -85px; /* Đẩy tất cả sang bên trái để không bị lệch */
+      width: auto; /* Đảm bảo thanh điều hướng chiếm đủ chiều rộng */
+      flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi không đủ không gian */
+    }
+
+    /* Danh sách các mục trong thanh điều hướng */
+    nav ul {
+      list-style: none; /* Loại bỏ dấu chấm của danh sách */
+      padding: 0; /* Loại bỏ padding */
+      margin: 0; /* Loại bỏ margin */
+      display: flex; /* Các mục menu nằm ngang */
+      gap: 20px; /* Giảm khoảng cách giữa các mục */
+      align-items: center; /* Căn giữa các mục menu theo chiều dọc */
+      white-space: nowrap; /* Đảm bảo các mục không bị xuống dòng */
+    }
+
+    /* Mỗi mục trong menu */
+    nav ul li {
+      margin: 0; /* Loại bỏ margin mặc định */
+    }
+
+    /* Thanh Tìm Kiếm */
+    nav .search-form {
+      display: flex; /* Sử dụng Flexbox để căn chỉnh các phần tử trong form */
+      align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+      margin-left: 10px; /* Khoảng cách từ các phần tử bên trái */
+      margin-right: 0; /* Giảm khoảng cách để cho các mục khác sát nhau hơn */
+    }
+
+    /* Cập nhật kích thước input và button tìm kiếm */
+    nav .search-form input.form-control {
+      width: 250px; /* Đặt chiều rộng cho thanh tìm kiếm */
+      border-radius: 20px; /* Bo góc cho thanh tìm kiếm */
+      height: 40px; /* Đảm bảo chiều cao đồng nhất với button */
+    }
+
+    nav .search-form button {
+      border-radius: 20px; /* Bo góc cho nút tìm kiếm */
+      padding: 6px 12px; /* Điều chỉnh khoảng cách trong nút */
+      background-color: #ff8c00; /* Màu nền của nút tìm kiếm */
+      border: none;
+      margin-left: 10px; /* Khoảng cách giữa input và button */
+      height: 40px; /* Đảm bảo chiều cao đồng nhất với input */
+      color: white;
+    }
+
+    nav .search-form button:hover {
+      background-color: #ff9e3a; /* Thay đổi màu khi hover */
+    }
+
+    /* Dropdown */
+    nav .nav-item.dropdown {
+      position: relative; /* Đảm bảo menu con hiển thị ở vị trí chính xác */
+    }
+
+    nav .nav-item.dropdown .dropdown-menu {
+      display: none; /* Ẩn menu con mặc định */
+      position: absolute; /* Đặt menu con dưới mục "Đăng Nhập" */
+      top: 100%; /* Đặt menu ngay dưới mục dropdown */
+      left: 0;
+      background-color: #007bff;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0;
+      width: 200px; /* Chiều rộng của dropdown */
+      z-index: 10;
+    }
+
+    nav .nav-item.dropdown:hover .dropdown-menu {
+      display: block; /* Hiển thị khi hover */
+    }
+
+    nav .dropdown-menu li {
+      width: 100%;
+    }
+
+    nav .dropdown-menu li a {
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    nav .dropdown-menu li a:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+
+
+  </style>
+    </head>
+<body>
+
+<!-- Thanh Header -->
+<header>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Thanh Điều Hướng -->
+      <div class="col text-left">
+        <nav>
+          <ul>
+            <li>
+              <a href="/" class="nav-link">
+                <i class="fas fa-home"></i> Giày Xinh
+              </a>
+            </li>
+            <li>
+              <a href="/product" class="nav-link">
+                <i class="fas fa-shoe-prints"></i> Sản Phẩm
+              </a>
+            </li>
+            <li>
+              <a href="/about" class="nav-link">
+                <i class="fas fa-info-circle"></i> Giới Thiệu
+              </a>
+            </li>
+            <li>
+              <a href="/contact" class="nav-link">
+                <i class="fas fa-envelope"></i> Liên Hệ
+              </a>
+            </li>
+            <!-- Thanh Tìm Kiếm -->
+            <li class="nav-item">
+              <form class="search-form" action="/search" method="get">
+                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search" name="query">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+            </li>
+            <li>
+              <a href="/cart" class="nav-link">
+                <i class="fas fa-shopping-cart"></i> Giỏ Hàng
+                <!-- Hiển thị số lượng đơn hàng trong giỏ hàng -->
+                <span class="badge badge-warning">0</span>
+              </a>
+            </li>
+            <!-- Dropdown Đăng Nhập -->
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link">
+                <i class="fas fa-user"></i> Đăng Nhập
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/login" class="nav-link">Đăng Nhập</a></li>
+                <li><a href="/register" class="nav-link">Đăng Ký</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Nội dung chính của trang -->
+<div class="content">
+  <!-- Nội dung động từ Thymeleaf sẽ được đặt ở đây -->
+</div>
+
+<!-- Thêm các thư viện JavaScript của Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
