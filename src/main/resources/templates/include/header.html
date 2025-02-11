@@ -155,13 +155,23 @@
               </a>
             </li>
             <!-- Dropdown Đăng Nhập -->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" th:if="${#httpServletRequest.remoteUser == null}">
               <a href="#" class="nav-link">
                 <i class="fas fa-user"></i> Đăng Nhập
               </a>
               <ul class="dropdown-menu">
-                <li><a href="/login" class="nav-link">Đăng Nhập</a></li>
-                <li><a href="/register" class="nav-link">Đăng Ký</a></li>
+                <li><a href="/auth/login" class="nav-link">Đăng Nhập</a></li>
+                <li><a href="/auth/register" class="nav-link">Đăng Ký</a></li>
+              </ul>
+            </li>
+            <!-- Hiển thị tên người dùng khi đã đăng nhập -->
+            <li class="nav-item dropdown" th:if="${#httpServletRequest.remoteUser != null}">
+              <a href="#" class="nav-link">
+                <i class="fas fa-user"></i> <span th:text="${username != null ? username : 'Chưa đăng nhập'}">Tên Người Dùng</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/profile" class="nav-link">Thay đổi người dùng</a></li>
+                <li><a href="/auth/logout" class="nav-link">Đăng Xuất</a></li>
               </ul>
             </li>
           </ul>

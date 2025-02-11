@@ -50,7 +50,7 @@
                 </div>
                 <div class="product-info">
                     <h6 th:text="${product.name}" class="product-name"></h6>
-                    <p th:text="'₫' + ${product.price}" class="product-price"></p>
+                    <p th:text="${product.price} + 'd'" class="product-price"></p>
                     <button class="btn btn-primary btn-sm w-100 mt-2" href="/">Add to Cart</button>
                 </div>
             </div>
